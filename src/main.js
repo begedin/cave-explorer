@@ -5,6 +5,7 @@ import Phaser from 'phaser';
 import BootState from './states/boot';
 import SplashState from './states/splash';
 import GameState from './states/game';
+import MVP1State from './states/mvp1';
 
 import config from './config';
 
@@ -20,6 +21,7 @@ class Game extends Phaser.Game {
     this.state.add('Boot', BootState, false);
     this.state.add('Splash', SplashState, false);
     this.state.add('Game', GameState, false);
+    this.state.add('MVP1', MVP1State, false);
 
     this.state.start('Boot');
   }
