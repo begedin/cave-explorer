@@ -1,0 +1,29 @@
+{
+  "name": "cave-explorer",
+  "version": "0.0.1",
+  "description": "A SHMUP with caves and gravity",
+  "main": "index.js",
+  "repository": "https://github.com/begedin/cave-explorer.git",
+  "author": "Nikola Begedin <begedinnikola@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack",
+    "deploy": "webpack --config webpack.production.config.js"
+  },
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "browser-sync": "^2.18.8",
+    "browser-sync-webpack-plugin": "^1.1.4",
+    "eslint": "^3.16.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-standard": "^2.0.1",
+    "expose-loader": "^0.7.3",
+    "phaser-ce": "^2.7.3",
+    "webfontloader": "^1.6.27",
+    "webpack": "^2.2.1"
+  }
+}
