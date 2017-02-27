@@ -22,5 +22,12 @@ export default class extends Phaser.State {
     this.game.add.existing(this.player);
 
     game.physics.enable( [ this.player ], Phaser.Physics.ARCADE);
+
+    let escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    escKey.onDown.add(goToMainMenu, this);
   }
+}
+
+function goToMainMenu() {
+  this.state.start('Game');
 }
