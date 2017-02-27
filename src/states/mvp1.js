@@ -9,22 +9,25 @@ export default class extends Phaser.State {
   }
 
   create () {
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y = 100;
+    // start physics
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    this.game.physics.arcade.gravity.y = 100;
 
+    // init player
     this.player = new Mushroom({
       game: this,
       x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'mushroom'
+      y: this.world.centerY
     });
 
     this.game.add.existing(this.player);
 
-    game.physics.enable( [ this.player ], Phaser.Physics.ARCADE);
-
-    let escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    // handle menu navigation
+    let escKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
     escKey.onDown.add(goToMainMenu, this);
+  }
+
+  update() {
   }
 }
 
