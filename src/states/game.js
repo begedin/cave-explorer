@@ -1,34 +1,24 @@
-/* globals __DEV__ */
 import Phaser from 'phaser';
-import Mushroom from '../sprites/mushroom';
 
 export default class extends Phaser.State {
   init () {}
   preload () {}
 
   create () {
-    const bannerText = 'Cave Explorer';
-    let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText);
+    const bannerText = 'MVP 1 - Movement Physics';
+    let banner = this.add.text(this.world.centerX, 80, bannerText);
     banner.font = 'Bangers';
     banner.padding.set(10, 16);
     banner.fontSize = 40;
     banner.fill = '#77BFA3';
     banner.smoothed = false;
     banner.anchor.setTo(0.5);
-
-    this.mushroom = new Mushroom({
-      game: this,
-      x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'mushroom'
+    banner.inputEnabled = true;
+    banner.events.onInputDown.add(() => {
+      this.state.start('MVP1');
     });
-
-    this.game.add.existing(this.mushroom);
   }
 
   render () {
-    if (__DEV__) {
-      this.game.debug.spriteInfo(this.mushroom, 32, 32);
-    }
   }
 }
