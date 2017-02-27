@@ -9,11 +9,13 @@ export default class extends Phaser.Sprite {
   }
 
   update () {
+    this.body.angularAcceleration = 0;
+
     if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
-        this.angle -= 5;
+        this.body.angularAcceleration -= 200;
     } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
     {
-        this.angle += 5;
+        this.body.angularAcceleration += 200;
     }
   }
 }
