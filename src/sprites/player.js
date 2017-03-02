@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default class extends Phaser.Sprite {
 
   constructor ({ game, x, y }) {
-    super(game, x, y, 'mushroom');
+    super(game, x, y, 'player');
     this.anchor.setTo(0.5);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
@@ -28,5 +28,13 @@ export default class extends Phaser.Sprite {
     } else {
       this.body.angularAcceleration = 0;
     }
+
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+      this.fireBullet();
+    }
+  }
+
+  fireBullet() {
+    console.log('fire bullet');
   }
 }
