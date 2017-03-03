@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Bullet from './bullet';
 
 export default class extends Phaser.Sprite {
 
@@ -7,11 +8,14 @@ export default class extends Phaser.Sprite {
     this.anchor.setTo(0.5);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
-    this.body.drag.set(50);
+    this.body.drag.set(30);
     this.body.maxVelocity.set(300);
 
     this.body.angularDrag = 200;
     this.body.maxAngular = 200;
+
+    this.coolDownTimer = this.game.time.create(false);
+    this.coolDownTimer.start();
   }
 
   update () {
@@ -35,6 +39,16 @@ export default class extends Phaser.Sprite {
   }
 
   fireBullet() {
-    console.log('fire bullet');
+    if (!this.onCoolDown) {
+      let bullet = new Bullet({
+        game: this.game,
+        source: this,
+      });
+      this.game.add.existing(bullet);
+      this.onCoolDown = true;
+      this.coolDownTimer.add(200, () => {
+        this.onCoolDown = false;
+      });
+    }
   }
 }
