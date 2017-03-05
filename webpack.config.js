@@ -55,6 +55,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      'game': path.resolve(__dirname, 'src'),
       'phaser': phaser,
       'pixi': pixi,
       'p2': p2

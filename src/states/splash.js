@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { centerGameObjects } from '../utils';
+import { centerGameObjects } from 'game/utils';
 
 export default class extends Phaser.State {
   init () {}
@@ -14,6 +14,7 @@ export default class extends Phaser.State {
     // load your assets
     //
     this.load.image('player', 'assets/images/player.png');
+    this.load.image('turret', 'assets/images/turret.png');
     this.load.image('bullet', 'assets/images/bullet.png');
   }
 

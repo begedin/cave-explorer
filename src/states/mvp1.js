@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Player from '../sprites/player';
+import Player from 'game/sprites/player';
 
 export default class extends Phaser.State {
   init () {}
@@ -10,13 +10,13 @@ export default class extends Phaser.State {
     this.game.physics.arcade.gravity.y = 100;
 
     // init player
-    this.player = new Player({
+    let player = new Player({
       game: this,
       x: this.world.centerX,
       y: this.world.centerY
     });
 
-    this.game.add.existing(this.player);
+    this.game.add.existing(player);
 
     // handle menu navigation
     let escKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);

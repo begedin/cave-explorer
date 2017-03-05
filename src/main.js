@@ -2,12 +2,13 @@ import 'pixi';
 import 'p2';
 import Phaser from 'phaser';
 
-import BootState from './states/boot';
-import SplashState from './states/splash';
-import GameState from './states/game';
-import MVP1State from './states/mvp1';
+import BootState from 'game/states/boot';
+import SplashState from 'game/states/splash';
+import GameState from 'game/states/game';
+import MVP1State from 'game/states/mvp1';
+import MVP2State from 'game/states/mvp2';
 
-import config from './config';
+import config from 'game/config';
 
 class Game extends Phaser.Game {
 
@@ -22,6 +23,7 @@ class Game extends Phaser.Game {
     this.state.add('Splash', SplashState, false);
     this.state.add('Game', GameState, false);
     this.state.add('MVP1', MVP1State, false);
+    this.state.add('MVP2', MVP2State, false);
 
     this.state.start('Boot');
   }
