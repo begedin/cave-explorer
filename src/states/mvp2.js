@@ -7,7 +7,8 @@ export default class extends MVP1State {
     super.create();
 
     let enemy = new Turret({
-      game: this,
+      game: this.game,
+      player: this.player,
       x: 100,
       y: 100
     });
