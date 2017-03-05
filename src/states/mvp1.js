@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Player from '../sprites/player';
+import Player from 'game/sprites/player';
 
 export default class extends Phaser.State {
   init () {}
@@ -11,7 +11,7 @@ export default class extends Phaser.State {
 
     // init player
     this.player = new Player({
-      game: this,
+      game: this.game,
       x: this.world.centerX,
       y: this.world.centerY
     });

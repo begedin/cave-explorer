@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import Bullet from './bullet';
+import Bullet from 'game/sprites/bullet';
 
 export default class extends Phaser.Sprite {
 
