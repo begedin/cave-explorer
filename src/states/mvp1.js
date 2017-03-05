@@ -1,12 +1,8 @@
 import Phaser from 'phaser';
-import Mushroom from '../sprites/mushroom';
+import Player from '../sprites/player';
 
 export default class extends Phaser.State {
   init () {}
-
-  preload () {
-    this.load.image('mushroom', 'assets/images/mushroom2.png');
-  }
 
   create () {
     // start physics
@@ -14,7 +10,7 @@ export default class extends Phaser.State {
     this.game.physics.arcade.gravity.y = 100;
 
     // init player
-    this.player = new Mushroom({
+    this.player = new Player({
       game: this,
       x: this.world.centerX,
       y: this.world.centerY
