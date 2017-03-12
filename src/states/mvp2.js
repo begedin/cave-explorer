@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import Turret from 'game/sprites/enemies/turret';
 import MVP1State from 'game/states/mvp1';
 

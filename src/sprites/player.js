@@ -14,8 +14,12 @@ export default class extends Phaser.Sprite {
     this.body.angularDrag = 200;
     this.body.maxAngular = 200;
 
+    this.body.collideWorldBounds=true;
+
     this.coolDownTimer = this.game.time.create(false);
     this.coolDownTimer.start();
+
+    this.game.camera.follow(this);
   }
 
   update () {
