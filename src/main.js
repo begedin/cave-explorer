@@ -7,6 +7,7 @@ import SplashState from 'game/states/splash';
 import GameState from 'game/states/game';
 import MVP1State from 'game/states/mvp1';
 import MVP2State from 'game/states/mvp2';
+import MVP3State from 'game/states/mvp3';
 
 import config from 'game/config';
 
@@ -24,6 +25,7 @@ class Game extends Phaser.Game {
     this.state.add('Game', GameState, false);
     this.state.add('MVP1', MVP1State, false);
     this.state.add('MVP2', MVP2State, false);
+    this.state.add('MVP3', MVP3State, false);
 
     this.state.start('Boot');
   }
