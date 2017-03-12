@@ -1,34 +1,67 @@
 import Phaser from 'phaser';
+import Player from 'game/sprites/player';
+import Turret from 'game/sprites/enemies/turret';
 
 export default class extends Phaser.State {
   init () {}
 
   create () {
-    // start physics
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    this.game.physics.arcade.gravity.y = 100;
-
-    // handle menu navigation
-    let escKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-    escKey.onDown.add(goToMainMenu, this);
-
-    this.map = this.game.add.tilemap('level');
-
-    //the first parameter is the tileset name as specified in Tiled, the second is the key to the asset
-    this.map.addTilesetImage('default', 'tiles');
-
-    //create layer
-    this.background = this.map.createLayer('background');
-    this.walls = this.map.createLayer('walls');
-
-    //collision on blockedLayer
-    this.map.setCollisionBetween(1, 100000, true, 'walls');
-
-    //resizes the game world to match the layer dimensions
-    this.background.resizeWorld();
+    this.enablePhysics();
+    this.enableExitOnEsc();
+    this.loadTileMap();
+    this.addPlayer();
+    this.addTurret();
   }
 
   update() {
+    this.game.physics.arcade.collide(this.player, this.walls);
+  }
+
+  enablePhysics() {
+    // start physics
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    this.game.physics.arcade.gravity.y = 100;
+  }
+
+  enableExitOnEsc() {
+    // handle menu navigation
+    let escKey = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    escKey.onDown.add(goToMainMenu, this);
+  }
+
+  loadTileMap() {
+    this.map = this.game.add.tilemap('level');
+
+    this.map.addTilesetImage('default', 'tiles');
+
+    this.background = this.map.createLayer('background');
+    this.walls = this.map.createLayer('walls');
+
+    this.map.setCollisionBetween(1, 100000, true, 'walls');
+
+    this.background.resizeWorld();
+  }
+
+  addPlayer() {
+    // init player
+    this.player = new Player({
+      game: this.game,
+      x: this.world.centerX,
+      y: this.world.centerY
+    });
+
+    this.game.add.existing(this.player);
+  }
+
+  addTurret() {
+    let enemy = new Turret({
+      game: this.game,
+      player: this.player,
+      x: 100,
+      y: 100
+    });
+
+    this.game.add.existing(enemy);
   }
 }
 
