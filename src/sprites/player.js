@@ -1,10 +1,14 @@
 import Phaser from 'phaser';
 import Bullet from 'game/sprites/bullet';
+import { scaleObjectToGameSize } from 'game/utils';
 
 export default class extends Phaser.Sprite {
 
   constructor ({ game, x, y }) {
     super(game, x, y, 'player');
+
+    scaleObjectToGameSize(this);
+
     this.anchor.setTo(0.5);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
@@ -48,6 +52,9 @@ export default class extends Phaser.Sprite {
         game: this.game,
         source: this,
       });
+
+      scaleObjectToGameSize(bullet);
+      
       this.game.add.existing(bullet);
       this.onCoolDown = true;
       this.coolDownTimer.add(200, () => {
