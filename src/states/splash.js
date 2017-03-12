@@ -17,6 +17,8 @@ export default class extends Phaser.State {
     this.load.image('turret_base', 'assets/images/turret_base.png');
     this.load.image('turret_gun', 'assets/images/turret_gun.png');
     this.load.image('bullet', 'assets/images/bullet.png');
+    this.load.tilemap('level', 'assets/levels/level.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('tiles', 'assets/images/tiles.png');
   }
 
   create () {
